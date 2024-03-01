@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         invoice_number: '',
         invoice_date: '',
@@ -25,7 +27,7 @@ export default function Form() {
         // console.log(formData);
         
         //1. get invoices
-        let invoices = localStorage.getItem('invoices');
+        let invoices = JSON.parse(localStorage.getItem('invoices'));
 
         //2. check if invoices is empty or null
         if(invoices == null){
@@ -37,6 +39,9 @@ export default function Form() {
 
         //4. save updated invoices in localstorage
         localStorage.setItem('invoices', JSON.stringify(invoices));
+
+        //alert success
+        navigate('/message');
     };
   
     return (
