@@ -1,6 +1,6 @@
 # CRUD React Application
 
-A simple CRUD (Create, Read, Update, Delete) application built using React. Users can manage their invoices efficiently by adding, viewing, updating, and deleting them through a user-friendly interface.
+A simple CRUD (Create, Read, Update, Delete) application built using React. Users can manage their invoices by adding, viewing, updating, and deleting them through a user-friendly interface.
 
 ## Features
 - Create new invoices with detailed information.
@@ -13,4 +13,4 @@ A simple CRUD (Create, Read, Update, Delete) application built using React. User
 - React Router
 - localStorage
 
-Thank you for viewing. You feedback will be highly appreciated.
+Your time in viewing this is much appreciated. Any feedback you provide would be greatly valued.
