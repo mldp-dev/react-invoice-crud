@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Table() {
-
     const [invoices, setInvoices] = useState([]);
 
     useEffect(() => {
         const storedInvoices = JSON.parse(localStorage.getItem('invoices'));
-        console.log('storedInvoices',storedInvoices)
-        
         if (storedInvoices) {
             setInvoices(storedInvoices);
         }
     }, []);
+
+    const deleteInvoice = (index) => {
+        const updatedInvoices = [...invoices];
+        updatedInvoices.splice(index, 1);
+        setInvoices(updatedInvoices);
+        localStorage.setItem('invoices', JSON.stringify(updatedInvoices));
+    };
 
     return (
         <div className="container table-container" style={{ marginTop: "20px" }}>
@@ -19,6 +24,7 @@ function Table() {
             <table className="table table-striped" style={{ marginBottom: "20px" }}>
                 <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Invoice Number</th>
                         <th scope="col">Invoice Date</th>
                         <th scope="col">Customer Name</th>
@@ -32,6 +38,7 @@ function Table() {
                 <tbody>
                     {invoices.map((invoice, index) => (
                         <tr key={index}>
+                            <td>{invoice.id}</td>
                             <td>{invoice.invoice_number}</td>
                             <td>{invoice.invoice_date}</td>
                             <td>{invoice.customer_name}</td>
@@ -41,10 +48,10 @@ function Table() {
                             <td>{invoice.total_invoice_amount}</td>
 
                             <td className="d-flex justify-content-between">
-                                <button type="button" className="btn btn-primary btn-sm mr-2">
+                                <Link to={`/edit/${invoice.id}`} className="btn btn-primary btn-sm mr-2">
                                     Edit
-                                </button>
-                                <button type="button" className="btn btn-danger btn-sm">
+                                </Link>
+                                <button type="button" className="btn btn-danger btn-sm" onClick={() => deleteInvoice(index)}>
                                     Delete
                                 </button>
                             </td>
@@ -55,6 +62,5 @@ function Table() {
         </div>
     );
 }
+
 export default Table;
-
-
