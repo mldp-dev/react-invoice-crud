@@ -13,4 +13,8 @@ A simple CRUD (Create, Read, Update, Delete) application built using React. User
 - React Router
 - localStorage
 
-Your time in viewing this is much appreciated. Any feedback you provide would be greatly valued. Thank you.
+Your time in viewing this is much appreciated. Any feedback you provide would be greatly valued. 
+Thank you.
+
+Sincerely,
+Liezl
