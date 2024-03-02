@@ -12,15 +12,18 @@ function Table() {
     }, []);
 
     const deleteInvoice = (index) => {
-        const updatedInvoices = [...invoices];
-        updatedInvoices.splice(index, 1);
-        setInvoices(updatedInvoices);
-        localStorage.setItem('invoices', JSON.stringify(updatedInvoices));
+        let result = confirm("Are you sure you want to delete this?")
+        if(result == true) {
+            const updatedInvoices = [...invoices];
+            updatedInvoices.splice(index, 1);
+            setInvoices(updatedInvoices);
+            localStorage.setItem('invoices', JSON.stringify(updatedInvoices));
+        }
     };
 
     return (
-        <div className="container table-container" style={{ marginTop: "20px" }}>
-            <h2 style={{ fontSize: "23px", marginBottom: "20px" }}>Invoice</h2>
+        <div className="container table-container" style={{ marginTop: "70px" }}>
+            <h2 style={{ fontSize: "23px", marginBottom: "20px" }}>List of Invoices</h2>
             <table className="table table-striped" style={{ marginBottom: "20px" }}>
                 <thead>
                     <tr>

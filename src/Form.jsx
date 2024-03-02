@@ -69,7 +69,7 @@ function Form() {
         localStorage.setItem('invoices', JSON.stringify(invoices));
         navigate('/message');
     }
-    
+
     function edit() {
         let updatedInvoices = JSON.parse(localStorage.getItem('invoices'));
         let index = updatedInvoices.findIndex(x => x.id == id);
@@ -79,8 +79,8 @@ function Form() {
     }
 
     function currencyFormat(num) {
-        return  num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-     }
+        return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
 
     return (
         <>
@@ -90,31 +90,32 @@ function Form() {
                         <h2 className="mb-4 p-5"> {id == null ? "Create" : "Edit"} Invoice</h2>
                         <div className="row">
                             <div className="col-md-7">
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="invoice_number" className="form-label">Invoice Number</label>
                                     <input type="text" name="invoice_number" className="form-control" onChange={handleChange} value={formData.invoice_number} />
                                 </div>
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="invoice_date" className="form-label">Invoice Date</label>
                                     <input type="date" name="invoice_date" className="form-control" onChange={handleChange} value={formData.invoice_date} />
                                 </div>
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="customer_name" className="form-label">Customer Name</label>
                                     <input type="text" name="customer_name" className="form-control" onChange={handleChange} value={formData.customer_name} />
                                 </div>
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="product_name" className="form-label">Product Name</label>
                                     <input type="text" name="product_name" className="form-control" onChange={handleChange} value={formData.product_name} />
                                 </div>
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="product_quantity" className="form-label">Product Quantity</label>
                                     <input type="number" name="product_quantity" className="form-control" onChange={handleChange} value={formData.product_quantity} />
                                 </div>
-                                <div>
+                                <div className="mb-3">
                                     <label htmlFor="product_price" className="form-label">Product Price</label>
                                     <input type="number" name="product_price" className="form-control" onChange={handleChange} value={formData.product_price} />
                                 </div>
                             </div>
+
                             <Total formData={formData} />
                         </div>
                         <div className="mt-4 mb-5 float-left">
